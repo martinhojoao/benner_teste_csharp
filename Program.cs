@@ -18,6 +18,13 @@
 		Console.WriteLine(network.LevelConnection(1, 4));
 		Console.WriteLine(network.LevelConnection(2, 7));
 		Console.WriteLine(network.LevelConnection(5, 3));
+		
+		network.Connect(4, 7);
+		Console.WriteLine(network.LevelConnection(1, 7));
+		network.Connect(7, 5);
+		Console.WriteLine(network.LevelConnection(1, 5));
+		
+		Console.WriteLine(network.LevelConnection(1, 6));
 	}
 }
 
@@ -29,6 +36,8 @@ class Network
 	protected Dictionary<int, List<int>> dictionary;
 	
 	private HashSet<int> visited;
+	
+	private int level;
 	
 	public Network(int numberOfElements) 
 	{
@@ -94,7 +103,7 @@ class Network
 		}
 		else 
 		{
-			throw new Exception("ERROR: at least of the provided numbers is higher than the number of elements in the network");
+			throw new Exception("ERROR: at least one of the provided numbers does not exist in the network.");
 		}
 	}
 	
@@ -124,9 +133,9 @@ class Network
 			return true;
 		}
 		
-		for (int i = 0; i < dictionary[element01].Count; i++) 
+		foreach (int neighbor in dictionary[element01])
 		{
-			if (QueryRecursive(dictionary[element01][i], element02)) 
+			if (QueryRecursive(neighbor, element02)) 
 			{
 				return true;
 			}
@@ -137,6 +146,36 @@ class Network
 	
 	public int LevelConnection(int element01, int element02)
 	{
-		return 0;
+		bool areConnected = Query(element01, element02);
+		visited.Clear();
+		level = 0;
+		return areConnected ? LevelConnectionRecursive(element01, element02) : 0;
+	}
+	
+	private int LevelConnectionRecursive(int element01, int element02)
+	{
+		if (element01 > numberOfElements || element02 > numberOfElements || element01 < 0 || element02 < 0)
+        {
+            throw new Exception("ERROR: both elements must be within the valid range.");
+        }
+        
+        visited.Add(element01);
+        
+        if (dictionary[element01].Contains(element02))
+		{
+			return 1;
+		}	
+		
+		level++;
+		
+		foreach (int neighbor in dictionary[element01]) 
+		{
+			if (!visited.Contains(neighbor))
+			{
+				LevelConnectionRecursive(neighbor, element02);
+			}
+		}
+		
+		return level;
 	}
 }

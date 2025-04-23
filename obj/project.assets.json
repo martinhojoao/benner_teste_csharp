@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/joao/Área de trabalho/Network/Network.csproj",
+      "projectUniqueName": "/home/joao/Área de trabalho/benner_teste_csharp/Network.csproj",
       "projectName": "Network",
-      "projectPath": "/home/joao/Área de trabalho/Network/Network.csproj",
+      "projectPath": "/home/joao/Área de trabalho/benner_teste_csharp/Network.csproj",
       "packagesPath": "/home/joao/.nuget/packages/",
-      "outputPath": "/home/joao/Área de trabalho/Network/obj/",
+      "outputPath": "/home/joao/Área de trabalho/benner_teste_csharp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/joao/.nuget/NuGet/NuGet.Config"

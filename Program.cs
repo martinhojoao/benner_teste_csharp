@@ -1,26 +1,3 @@
-﻿class Program
-{
-	static void Main()
-	{
-		Network network = new Network(8);
-		network.Connect(1, 6);
-		network.Connect(1, 2);
-		network.Connect(2, 4);
-		network.Connect(2, 6);
-		network.Connect(5, 8);
-		
-		Console.WriteLine(network.Query(1, 2));
-		Console.WriteLine(network.Query(1, 4));
-		Console.WriteLine(network.Query(2, 7));
-		Console.WriteLine(network.Query(5, 3));
-		
-		Console.WriteLine(network.LevelConnection(1, 2));
-		Console.WriteLine(network.LevelConnection(1, 4));
-		Console.WriteLine(network.LevelConnection(2, 7));
-		Console.WriteLine(network.LevelConnection(5, 3));
-	}
-}
-
 class Network
 {
 	

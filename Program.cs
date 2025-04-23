@@ -79,7 +79,7 @@ class Network
 	{
 		if (element01 >= numberOfElements || element02 >= numberOfElements || element01 < 0 || element02 < 0)
         {
-            throw new Exception("ERROR: both elements must be within the valid range.");
+        	throw new Exception("ERROR: both elements must be within the valid range.");
         }
         
 		if (dictionary.ContainsKey(element01) && dictionary.ContainsKey(element02))
@@ -149,7 +149,7 @@ class Network
 	{
 		if (element01 > numberOfElements || element02 > numberOfElements || element01 < 0 || element02 < 0)
 		{
-		    throw new Exception("ERROR: both elements must be within the valid range.");
+			throw new Exception("ERROR: both elements must be within the valid range.");
 		}
         
 		visited.Add(element01);

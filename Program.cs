@@ -3,8 +3,8 @@
 	static void Main()
 	{
 		Network network = new Network(8);
-		network.Connect(1, 2);
 		network.Connect(1, 6);
+		network.Connect(1, 2);
 		network.Connect(2, 4);
 		network.Connect(2, 6);
 		network.Connect(5, 8);
@@ -18,13 +18,6 @@
 		Console.WriteLine(network.LevelConnection(1, 4));
 		Console.WriteLine(network.LevelConnection(2, 7));
 		Console.WriteLine(network.LevelConnection(5, 3));
-		
-		network.Connect(4, 7);
-		Console.WriteLine(network.LevelConnection(1, 7));
-		network.Connect(7, 5);
-		Console.WriteLine(network.LevelConnection(1, 5));
-		
-		Console.WriteLine(network.LevelConnection(1, 6));
 	}
 }
 
@@ -47,8 +40,8 @@ class Network
 		}
 		
 		this.numberOfElements = numberOfElements;
-        this.dictionary = new Dictionary<int, List<int>>();
-        this.visited = new HashSet<int>();
+		this.dictionary = new Dictionary<int, List<int>>();
+		this.visited = new HashSet<int>();
 		
 		for (int i = 1; i <= numberOfElements; i++)
 		{
@@ -60,9 +53,9 @@ class Network
 	public void Connect(int element01, int element02)
 	{
 		if (element01 > numberOfElements || element02 > numberOfElements || element01 < 0 || element02 < 0)
-        {
-            throw new Exception("ERROR: both elements must be within the valid range.");
-        }
+		{
+			throw new Exception("ERROR: both elements must be within the valid range.");
+		}
         
 		if (dictionary.ContainsKey(element01) && dictionary.ContainsKey(element02))
 		{
@@ -117,18 +110,18 @@ class Network
 	{
 		
 		if (element01 > numberOfElements || element02 > numberOfElements || element01 < 0 || element02 < 0)
-        {
-            throw new Exception("ERROR: both elements must be within the valid range.");
-        }
+		{
+		    	throw new Exception("ERROR: both elements must be within the valid range.");
+		}
         
-        if (visited.Contains(element01))
-        {
+		if (visited.Contains(element01))
+		{
 			return false;
 		}
 		
 		visited.Add(element01);
         
-        if (dictionary[element01].Contains(element02))
+		if (dictionary[element01].Contains(element02))
 		{
 			return true;
 		}
@@ -155,13 +148,13 @@ class Network
 	private int LevelConnectionRecursive(int element01, int element02)
 	{
 		if (element01 > numberOfElements || element02 > numberOfElements || element01 < 0 || element02 < 0)
-        {
-            throw new Exception("ERROR: both elements must be within the valid range.");
-        }
+		{
+		    throw new Exception("ERROR: both elements must be within the valid range.");
+		}
         
-        visited.Add(element01);
-        
-        if (dictionary[element01].Contains(element02))
+		visited.Add(element01);
+		
+		if (dictionary[element01].Contains(element02))
 		{
 			return 1;
 		}	
@@ -179,3 +172,4 @@ class Network
 		return level;
 	}
 }
+
